@@ -1,5 +1,6 @@
 #include "AbstractFactory.h"
 #include "FactoryMethod.h"
+#include "Singleton.h"
 #include <memory>
 
 void TestAbstractFactory() {
@@ -21,7 +22,18 @@ void TestFactoryMethod() {
     product2->use();
 }
 
+void TestSingleton() {
+    Singleton* sing1 = Singleton::GetInstance();
+    for(auto i = 0; i < 5; i++) {
+        sing1->SingletonOperation();
+    }
+    Singleton* sing2 = Singleton::GetInstance();
+    for(auto i = 0; i < 3; i++) {
+        sing2->SingletonOperation();
+    }
+}
+
 int main() {
-    TestFactoryMethod();
+    TestSingleton();
     return 0;
 }
