@@ -13,11 +13,11 @@ void ConcreteProduct2::use() {
 }
 
 std::shared_ptr<Product> ConcreteCreator1::CreateProduct() {
-    std::shared_ptr<Product> product1(new ConcreteProduct1);
+    auto product1 = std::make_shared<ConcreteProduct1>();
     return product1;
 }
 
 std::shared_ptr<Product> ConcreteCreator2::CreateProduct() {
-    std::shared_ptr<Product> product2(new ConcreteProduct2);
+    auto product2 = std::make_shared<ConcreteProduct2>();
     return product2;
 }
