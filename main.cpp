@@ -1,6 +1,17 @@
-#include <iostream>
+#include "AbstractFactory.h"
+#include <memory>
+
+int TestAbstractFactory() {
+    std::shared_ptr<WidgetFactory> motifPtr(new MotifWidgetFactory());
+    std::shared_ptr<WidgetFactory> pwPtr(new PMWidgetFactory());
+    motifPtr->CreateWindow();
+    motifPtr->CreateScrollBar();
+    pwPtr->CreateScrollBar();
+    pwPtr->CreateWindow();
+    return 0;
+}
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    TestAbstractFactory();
     return 0;
 }
