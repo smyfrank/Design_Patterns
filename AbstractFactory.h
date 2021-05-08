@@ -8,19 +8,26 @@
 
 class WidgetFactory {
 public:
+    WidgetFactory();
+    virtual ~WidgetFactory();
     virtual void CreateScrollBar() = 0;
     virtual void CreateWindow() = 0;
 };
 
 class MotifWidgetFactory : public WidgetFactory {
 public:
-    virtual void CreateScrollBar() override;
-    virtual void CreateWindow() override;
+    MotifWidgetFactory();
+    ~MotifWidgetFactory() override;
+    void CreateScrollBar() override;
+    void CreateWindow() override;
 };
 
 class PMWidgetFactory : public WidgetFactory {
-    virtual void CreateScrollBar() override;
-    virtual void CreateWindow() override;
+public:
+    PMWidgetFactory();
+    ~PMWidgetFactory() override;
+    void CreateScrollBar() override;
+    void CreateWindow() override;
 };
 
 #endif //DESIGN_PATTERNS_ABSTRACTFACTORY_H

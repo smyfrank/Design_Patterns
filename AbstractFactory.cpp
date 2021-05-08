@@ -4,6 +4,14 @@
 
 #include "AbstractFactory.h"
 
+WidgetFactory::WidgetFactory() = default;
+
+WidgetFactory::~WidgetFactory() = default;
+
+MotifWidgetFactory::MotifWidgetFactory() = default;
+
+MotifWidgetFactory::~MotifWidgetFactory() = default;
+
 void MotifWidgetFactory::CreateScrollBar() {
     std::cout << "Create Motif scroll bar." << std::endl;
 }
@@ -11,6 +19,10 @@ void MotifWidgetFactory::CreateScrollBar() {
 void MotifWidgetFactory::CreateWindow() {
     std::cout << "Create Motif window." << std::endl;
 }
+
+PMWidgetFactory::PMWidgetFactory() = default;
+
+PMWidgetFactory::~PMWidgetFactory() = default;
 
 void PMWidgetFactory::CreateScrollBar() {
     std::cout << "Create PW scroll bar." << std::endl;
