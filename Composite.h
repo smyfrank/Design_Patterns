@@ -7,6 +7,7 @@
 #include <list>
 #include <memory>
 
+namespace composite {
 class Component {
 protected:
     int index;
@@ -37,3 +38,4 @@ public:
     void Remove(std::shared_ptr<Component> com) final;
     void Operation() final;
 };
+} // namespace composite

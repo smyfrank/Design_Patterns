@@ -3,6 +3,7 @@
 #include "Singleton.h"
 #include "Adapter.h"
 #include "Composite.h"
+#include "Decorator.h"
 #include <memory>
 
 void TestAbstractFactory() {
@@ -42,10 +43,10 @@ void TestAdapter() {
 }
 
 void TestComposite() {
-    std::shared_ptr<Composite> composite = std::make_shared<Composite>(0);
-    std::shared_ptr<Leaf> leaf1 = std::make_shared<Leaf>(1);
-    std::shared_ptr<Leaf> leaf2 = std::make_shared<Leaf>(2);
-    std::shared_ptr<Leaf> leaf3 = std::make_shared<Leaf>(3);
+    std::shared_ptr<composite::Composite> composite = std::make_shared<composite::Composite>(0);
+    std::shared_ptr<composite::Leaf> leaf1 = std::make_shared<composite::Leaf>(1);
+    std::shared_ptr<composite::Leaf> leaf2 = std::make_shared<composite::Leaf>(2);
+    std::shared_ptr<composite::Leaf> leaf3 = std::make_shared<composite::Leaf>(3);
     composite->Add(leaf1);
     composite->Add(leaf2);
     composite->Add(leaf3);
@@ -55,7 +56,19 @@ void TestComposite() {
     composite->Operation();
 }
 
+void TestDecorator() {
+    // original concrete component
+    auto conComp = std::make_shared<decorator::ConcreteComponent>();
+    conComp->Operation();
+    // add state
+    auto conDec1 = std::make_shared<decorator::ConcreteDecoratorA>(conComp, "state1");
+    conDec1->Operation();
+    // add behavior
+    auto conDec2 = std::make_shared<decorator::ConcreteDecoratorB>(conComp);
+    conDec2->Operation();
+}
+
 int main() {
-    TestComposite();
+    TestDecorator();
     return 0;
 }

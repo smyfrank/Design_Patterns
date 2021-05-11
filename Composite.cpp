@@ -4,19 +4,19 @@
 
 #include "Composite.h"
 
-void Leaf::Operation() {
+void composite::Leaf::Operation() {
     std::cout << "Index " << index << "'s operation" << std::endl;
 }
 
-void Composite::Add(std::shared_ptr<Component> com) {
+void composite::Composite::Add(std::shared_ptr<Component> com) {
     children.emplace_back(com);
 }
 
-void Composite::Remove(std::shared_ptr <Component> com) {
+void composite::Composite::Remove(std::shared_ptr <Component> com) {
     children.remove(com);
 }
 
-void Composite::Operation() {
+void composite::Composite::Operation() {
     for(const auto& i : children) {
         i->Operation();
     }
