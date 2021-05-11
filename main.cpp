@@ -1,6 +1,7 @@
 #include "AbstractFactory.h"
 #include "FactoryMethod.h"
 #include "Singleton.h"
+#include "Adapter.h"
 #include <memory>
 
 void TestAbstractFactory() {
@@ -33,7 +34,13 @@ void TestSingleton() {
     }
 }
 
+void TestAdapter() {
+    std::shared_ptr<Adaptee> adaptee = std::make_shared<Adaptee>();
+    std::shared_ptr<Adapter> adapter = std::make_shared<Adapter>(adaptee);
+    adapter->Request();
+}
+
 int main() {
-    TestSingleton();
+    TestAdapter();
     return 0;
 }
