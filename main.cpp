@@ -4,6 +4,7 @@
 #include "Adapter.h"
 #include "Composite.h"
 #include "Decorator.h"
+#include "Proxy.h"
 #include <memory>
 
 void TestAbstractFactory() {
@@ -68,7 +69,14 @@ void TestDecorator() {
     conDec2->Operation();
 }
 
+void TestProxy() {
+    std::cout << "Beginning of instantiation of Proxy" << std::endl;
+    auto proxyIns = std::make_shared<Proxy>();  // instantiate Proxy but RealSubject has not been instantiated yet
+    std::cout << "End of instantiation of Proxy" << std::endl;
+    proxyIns->request();
+}
+
 int main() {
-    TestDecorator();
+    TestProxy();
     return 0;
 }
