@@ -2,6 +2,7 @@
 #include "FactoryMethod.h"
 #include "Singleton.h"
 #include "Adapter.h"
+#include "Composite.h"
 #include <memory>
 
 void TestAbstractFactory() {
@@ -40,7 +41,21 @@ void TestAdapter() {
     adapter->Request();
 }
 
+void TestComposite() {
+    std::shared_ptr<Composite> composite = std::make_shared<Composite>(0);
+    std::shared_ptr<Leaf> leaf1 = std::make_shared<Leaf>(1);
+    std::shared_ptr<Leaf> leaf2 = std::make_shared<Leaf>(2);
+    std::shared_ptr<Leaf> leaf3 = std::make_shared<Leaf>(3);
+    composite->Add(leaf1);
+    composite->Add(leaf2);
+    composite->Add(leaf3);
+    composite->Operation();
+    leaf2->Operation();
+    composite->Remove(leaf2);
+    composite->Operation();
+}
+
 int main() {
-    TestAdapter();
+    TestComposite();
     return 0;
 }
