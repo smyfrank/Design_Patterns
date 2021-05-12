@@ -6,6 +6,7 @@
 #include "Decorator.h"
 #include "Proxy.h"
 #include "Observer.h"
+#include "Strategy.h"
 #include <memory>
 
 void TestAbstractFactory() {
@@ -94,7 +95,17 @@ void TestObserver() {
     sub->Notify();
 }
 
+void TestStrategy() {
+    auto context = std::make_shared<strategy::Context>();
+    auto strategyA = std::make_shared<strategy::ConcreteStrategyA>();
+    auto strategyB = std::make_shared<strategy::ConcreteStrategyB>();
+    context->SetStrategy(strategyA);
+    context->Algorithm();
+    context->SetStrategy(strategyB);
+    context->Algorithm();
+}
+
 int main() {
-    TestObserver();
+    TestStrategy();
     return 0;
 }
