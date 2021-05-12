@@ -12,6 +12,7 @@ ConcreteObserver::ConcreteObserver(std::string iname)
 
 }
 
+// cal subject function getState() to update observer's state
 void ConcreteObserver::Update(std::shared_ptr <Subject> sub) {
     observerState = sub -> getState();
     std::cout << "Observer " << obName << " updates state to " << observerState << std::endl;
@@ -41,6 +42,7 @@ void Subject::Detach(std::shared_ptr<Observer> ob) {
     }
 }
 
+// Notify all observers to update
 void Subject::Notify() {
     for(const auto& i : obList) {
         i->Update(shared_from_this());
