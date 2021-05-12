@@ -115,6 +115,15 @@ void TestTemplateMethod() {
 
 
 int main() {
+    TestAbstractFactory();
+    TestFactoryMethod();
+    TestSingleton();
+    TestAdapter();
+    TestComposite();
+    TestStrategy();
+    TestProxy();
+    TestObserver();
+    TestStrategy();
     TestTemplateMethod();
     return 0;
 }
