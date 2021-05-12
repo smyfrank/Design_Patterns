@@ -7,6 +7,7 @@
 #include "Proxy.h"
 #include "Observer.h"
 #include "Strategy.h"
+#include "TemplateMethod.h"
 #include <memory>
 
 void TestAbstractFactory() {
@@ -105,7 +106,15 @@ void TestStrategy() {
     context->Algorithm();
 }
 
+void TestTemplateMethod() {
+    auto a = std::make_shared<templateMethod::ConcreteClassA>();
+    auto b = std::make_shared<templateMethod::ConcreteClassB>();
+    a->TemplateMethod();
+    b->TemplateMethod();
+}
+
+
 int main() {
-    TestStrategy();
+    TestTemplateMethod();
     return 0;
 }
