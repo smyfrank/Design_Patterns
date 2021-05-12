@@ -5,6 +5,7 @@
 #include "Composite.h"
 #include "Decorator.h"
 #include "Proxy.h"
+#include "Observer.h"
 #include <memory>
 
 void TestAbstractFactory() {
@@ -29,11 +30,11 @@ void TestFactoryMethod() {
 void TestSingleton() {
     Singleton* sing1 = Singleton::GetInstance();
     for(auto i = 0; i < 5; i++) {
-        sing1->SingletonOperation();
+        Singleton::SingletonOperation();
     }
     Singleton* sing2 = Singleton::GetInstance();
     for(auto i = 0; i < 3; i++) {
-        sing2->SingletonOperation();
+        Singleton::SingletonOperation();
     }
 }
 
@@ -76,7 +77,24 @@ void TestProxy() {
     proxyIns->request();
 }
 
+void TestObserver() {
+    std::shared_ptr<observer::Subject> sub = std::make_shared<observer::ConcreteSubject>();
+    std::shared_ptr<observer::Observer> ob1 = std::make_shared<observer::ConcreteObserver>("ob1");
+    std::shared_ptr<observer::Observer> ob2 = std::make_shared<observer::ConcreteObserver>("ob2");
+    sub->Attach(ob1);
+    sub->Attach(ob2);
+    sub->Attach(ob1); // Repeatedly attach test
+
+    sub->setState(1);
+    sub->Notify();
+
+    sub->Detach(ob1);
+
+    sub->setState(2);
+    sub->Notify();
+}
+
 int main() {
-    TestProxy();
+    TestObserver();
     return 0;
 }
